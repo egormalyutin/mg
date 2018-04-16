@@ -15,20 +15,12 @@ gulp.task "moon", ->
 		.pipe moon()
 		.pipe gulp.dest "dist"
 
-gulp.task "watch:moon", ->
-	gulp.watch "app/**/*.moon", ->
-		gulp.src "app/**/*.moon"
-			.pipe moon()
-			.pipe gulp.dest "dist"
-
 gulp.task "lua", ->
 	gulp.src "app/**/*.lua"
 		.pipe gulp.dest "dist"
 
-gulp.task "watch:lua", ->
-	gulp.watch "app/**/*.lua", ->
-		gulp.src "app/**/*.lua"
-			.pipe gulp.dest "dist"
+gulp.task "copy", ->
+	gulp.src ["app/**/*", "!app/**/*.lua", "!app/**/*.moon"]
+		.pipe gulp.dest "dist"
 
-gulp.task 'build', ['moon', 'lua']
-gulp.task 'watch', ['watch:moon', 'watch:lua']
+gulp.task 'build', ['moon', 'lua', 'copy']

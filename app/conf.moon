@@ -1,8 +1,7 @@
 love.conf = (t) ->
 	t.version = "11.0"
 
-	t.window.width  = 600
-	t.window.height = 300
+	t.window.fullscreen = true
 
 	t.modules.physics = false
 	t.modules.data    = false
